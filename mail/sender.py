@@ -1,5 +1,3 @@
-from os import getenv
-from dotenv import load_dotenv
 from email.message import EmailMessage
 import ssl
 import smtplib
@@ -28,12 +26,4 @@ class EmailSender:
             smtp.login(self.mailFrom, self.password)
             smtp.sendmail(self.mailFrom, self.mailTo, self.__createEmail().as_string())
 
-if __name__ == "__main__":
-    mailFrom = 'dragonball.xd.lol@gmail.com'
-    password = getenv("PASSWORD")
-    mailTo = 'gustavo.dela.fuente@hotmail.com'
-    subject = 'Keylogger Test'
-    body = 'Test'
 
-    email_sender = EmailSender(mailFrom, password, mailTo, subject, body)
-    email_sender.sendEmail()
